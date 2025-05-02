@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, showToast, Toast } from "@raycast/api";
+import { Form, ActionPanel, Action, showToast, Toast, closeMainWindow,  } from "@raycast/api";
 import { exec } from "child_process";
 import { promisify } from "util";
 
@@ -19,6 +19,7 @@ export default function Command() {
       await execPromise(`open --background "${obsidianUrl}"`);
 
       showToast({ title: "メモを追加しました", message: values.memo });
+      closeMainWindow()
     } catch (error) {
       console.error(error);
       showToast({ title: "エラーが発生しました", style: Toast.Style.Failure });
